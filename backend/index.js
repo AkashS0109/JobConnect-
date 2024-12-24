@@ -13,14 +13,13 @@ import applicationRoute from "./Routes/application.route.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
- 
 
 // Load environment variables
-dotenv.config({ });
-
+// dotenv.config({ });
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 const app = express();
 
-const _dirname = path.resolve();
+
      
 
 
@@ -45,10 +44,10 @@ app.use("/api/v1/application", applicationRoute);
 
 // Serve Frontend Static Files
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname, "/frontend/dist/index.html"));
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 
 
